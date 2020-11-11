@@ -1,0 +1,259 @@
+<!doctype html>
+{% load static %}
+<html lang="en">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="icon" href="{{common_data.ico.url}}" >
+        <title>{{common_data.page_title}}</title>
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href='{% static "learnit/css/bootstrap.css" %}'>
+        <link rel="stylesheet" href='{% static "learnit/vendors/linericon/style.css" %}'>
+        <link rel="stylesheet" href='{% static "learnit/css/font-awesome.min.css" %}'>
+        <link rel="stylesheet" href='{% static "learnit/vendors/owl-carousel/owl.carousel.min.css" %}'>
+        <link rel="stylesheet" href='{% static "learnit/vendors/lightbox/simpleLightbox.css" %}'>
+        <link rel="stylesheet" href='{% static "learnit/vendors/nice-select/css/nice-select.css" %}'>
+        <link rel="stylesheet" href='{% static "learnit/vendors/animate-css/animate.css" %}'>
+        <link rel="stylesheet" href='{% static "learnit/vendors/popup/magnific-popup.css" %}'>
+        <!-- main css -->
+        <link rel="stylesheet" href='{% static "learnit/css/style.css" %}'>
+        <link rel="stylesheet" href='{% static "learnit/css/responsive.css" %}'>
+    </head>
+    <body>
+
+        <!--================Header Menu Area =================-->
+        <header class="header_area">
+            <div class="main_menu">
+            	<nav class="navbar navbar-expand-lg navbar-light">
+					<div class="container">
+						<!-- Brand and toggle get grouped for better mobile display -->
+						<a class="navbar-brand logo_h" href="{% url 'home' %}">
+                            <img src="{{common_data.logo.url}}" alt="logo" height="70" width="160">
+                        </a>
+						<!-- Collect the nav links, forms, and other content for toggling -->
+						<div class="collapse navbar-collapse offset" id="navbarSupportedContent">
+							<ul class="nav navbar-nav menu_nav ml-auto">
+								<li class="nav-item active"><a class="nav-link" href="{% url 'home' %}">Home</a></li>
+                                <li class="nav-item submenu dropdown">
+									<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Courses</a>
+									<ul class="dropdown-menu">
+										<li class="nav-item"><a class="nav-link" href="{% url 'courses' %}?title=Python">Python</a></li>
+                                        <li class="nav-item"><a class="nav-link" href="{% url 'courses' %}?title=Django">Django</a></li>
+                                        <li class="nav-item"><a class="nav-link" href="{% url 'courses' %}?title=Testing">Testing</a></li>
+                                        <li class="nav-item"><a class="nav-link" href="{% url 'courses' %}?title=PHP">PHP</a></li>
+                                        <li class="nav-item"><a class="nav-link" href="{% url 'courses' %}?title=Java">Java</a></li>
+									</ul>
+								</li>
+<!--								<li class="nav-item submenu dropdown">-->
+<!--									<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Pages</a>-->
+<!--									<ul class="dropdown-menu">-->
+<!--										<li class="nav-item"><a class="nav-link" href="elements.html">Elements</a></li>-->
+<!--									</ul>-->
+<!--								</li>-->
+<!--								<li class="nav-item submenu dropdown">-->
+<!--									<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Blog</a>-->
+<!--									<ul class="dropdown-menu">-->
+<!--										<li class="nav-item"><a class="nav-link" href="blog.html">Blog</a></li>-->
+<!--										<li class="nav-item"><a class="nav-link" href="single-blog.html">Blog Details</a></li>-->
+<!--									</ul>-->
+<!--								</li>-->
+								<li class="nav-item"><a class="nav-link" href="{% url 'contact' %}">Contact</a></li>
+							</ul>
+						</div>
+					</div>
+            	</nav>
+            </div>
+        </header>
+        <!--================Header Menu Area =================-->
+
+
+
+        {% block content %}
+        {% endblock %}
+
+
+
+        <!--================Impress Area =================-->
+        <br><br>
+<!--        <section class="impress_area p_120">-->
+<!--        	<div class="container">-->
+<!--        		<div class="impress_inner text-center">-->
+<!--					<h2>Become an instructor</h2>-->
+<!--					<p>There is a moment in the life of any aspiring astronomer that it is time to buy that first telescope. It’s exciting to think about setting up your own viewing station whether that is on the deck</p>-->
+<!--					<a class="main_btn2" href="#">Apply for the post</a>-->
+<!--        		</div>-->
+<!--        	</div>-->
+<!--        </section>-->
+        <!--================End Impress Area =================-->
+
+        <!--================ start footer Area  =================-->
+            <footer class="footer-area p_120">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-3  col-md-6 col-sm-6">
+                            <div class="single-footer-widget tp_widgets">
+                               <h6 class="footer_title">Top Course</h6>
+                                <ul class="list">
+                                    <li><a href="{% url 'courses' %}?title=Python" target="_blank">Python</a></li>
+                                    <li><a href="{% url 'courses' %}?title=Django" target="_blank">Django</a></li>
+                                    <li><a href="{% url 'courses' %}?title=Testing">Selenium</a></li>
+                                    <li><a href="{% url 'courses' %}?title=Java" target="_blank">Java</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-lg-3  col-md-6 col-sm-6">
+                            <div class="single-footer-widget tp_widgets">
+                               <h6 class="footer_title">Quick Links</h6>
+                                <ul class="list">
+                                    <li><a href="{% url 'home' %}">Home</a></li>
+                                    <li><a href="{% url 'courses' %}">Courses</a></li>
+                                    <li><a href="{% url 'contact' %}">Contact</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-lg-2  col-md-6 col-sm-6">
+                            <div class="single-footer-widget tp_widgets">
+                               <h6 class="footer_title">Features</h6>
+                                <ul class="list">
+                                    <li><a href="javascript:">Advanced Python</a></li>
+                                    <li><a href="javascript:">Advanced Django</a></li>
+                                    <li><a href="javascript:">Automation Testing</a></li>
+                                    <li><a href="javascript:">MVT</a></li>
+                                </ul>
+                            </div>
+                        </div>
+<!--                        <div class="col-lg-2  col-md-6 col-sm-6">-->
+<!--                            <div class="single-footer-widget tp_widgets">-->
+<!--                               <h6 class="footer_title">Resources</h6>-->
+<!--                                <ul class="list">-->
+<!--                                    <li><a href="javascript:">Python</a></li>-->
+<!--                                    <li><a href="javascript:">Django</a></li>-->
+<!--                                    <li><a href="javascript:">Selenium</a></li>-->
+<!--                                    <li><a href="javascript:">Java</a></li>-->
+<!--                                </ul>-->
+<!--                            </div>-->
+<!--                        </div>-->
+                        <div class="col-lg-4 col-md-6 col-sm-6">
+                            <aside class="f_widget news_widget">
+                                <div class="f_title">
+                                    <h3 class="footer_title">Newsletter</h3>
+                                </div>
+                                <p>Stay updated with our latest trends</p>
+                                <div id="mc_embed_signup">
+<!--                                    <form target="_blank" action="https://spondonit.us12.list-manage.com/subscribe/post?u=1462626880ade1ac87bd9c93a&amp;id=92a4423d01" method="get" class="subscribe_form relative">-->
+                                        <div class="input-group d-flex flex-row">
+                                            <input name="e_mail" id="e_mail" placeholder="Enter email address" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Email Address '" required="" type="email">
+                                            <button class="btn sub-btn" onclick="subscribe_my_site()"><span class="lnr lnr-arrow-right"></span></button>
+                                        </div>
+                                        <div class="mt-10 info"></div>
+<!--                                    </form>-->
+                                </div>
+                            </aside>
+                        </div>
+                    </div>
+                    <div class="row footer-bottom d-flex justify-content-between align-items-center">
+                        <p class="col-lg-8 col-md-8 footer-text m-0"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+    Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+                        <div class="col-lg-4 col-md-4 footer-social">
+                            <a href="{common_data.facebook}"><i class="fa fa-facebook"></i></a>
+                            <a href="{common_data.twitter}"><i class="fa fa-twitter"></i></a>
+                            <a href="{common_data.linked_in}"><i class="fa fa-dribbble"></i></a>
+                            <a href="{common_data.instagram}"><i class="fa fa-behance"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+            <!--================ End footer Area  =================-->
+<input type="hidden" id="location">
+
+        <!-- Optional JavaScript -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src='{% static "learnit/js/jquery-3.3.1.min.js" %}'></script>
+        <script src='{% static "learnit/js/popper.js" %}'></script>
+        <script src='{% static "learnit/js/bootstrap.min.js" %}'></script>
+        <script src='{% static "learnit/js/stellar.js" %}'></script>
+        <script src='{% static "learnit/vendors/lightbox/simpleLightbox.min.js" %}'></script>
+        <script src='{% static "learnit/vendors/nice-select/js/jquery.nice-select.min.js" %}'></script>
+        <script src='{% static "learnit/vendors/isotope/imagesloaded.pkgd.min.js" %}'></script>
+        <script src='{% static "learnit/vendors/isotope/isotope.pkgd.min.js" %}'></script>
+        <script src='{% static "learnit/vendors/owl-carousel/owl.carousel.min.js" %}'></script>
+        <script src='{% static "learnit/vendors/popup/jquery.magnific-popup.min.js" %}'></script>
+        <script src='{% static "learnit/js/jquery.ajaxchimp.min.js" %}'></script>
+        <script src='{% static "learnit/vendors/counter-up/jquery.waypoints.min.js" %}'></script>
+        <script src='{% static "learnit/vendors/counter-up/jquery.counterup.js" %}'></script>
+        <script src='{% static "learnit/js/mail-script.js" %}'></script>
+        <script src='{% static "learnit/js/theme.js" %}'></script>
+
+    <!-- JS Added by Kuntal -->
+<script>
+		function subscribe_my_site()
+		{
+		    let res = check_email($('#e_mail').val());
+		    if(res)
+		    {
+                $.ajax({
+                        type: "GET",
+                        contentType: "application/json; charset=utf-8",
+                        url: '{% url "subscribe" %}',
+                        async: true,
+                        data: {
+                            mail: $('#e_mail').val(),
+                            location: $('#location').val(),
+                           },
+                        success: function (response)
+                            {
+                              let success = response['success'];
+                              if(success)
+                              {
+                                 alert("Successfully Added Email !!");
+                              }
+                              else
+                              {
+                                  alert("Email Already Exist !! ");
+                              }
+                           },
+                        error: function ()
+                        {
+                        notify('Something went wrong');
+                        }
+                });
+            }
+            else
+            {
+                alert("Invalid Email Input");
+            }
+		}
+
+		function check_email(mail)
+		{
+		    if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(mail))
+             {
+                return (true);
+             }
+            else
+             {
+                return (false);
+             }
+		}
+
+		function getLocation()
+		{
+              if (navigator.geolocation)
+              {
+                navigator.geolocation.getCurrentPosition(showPosition);
+              }
+              else
+              {
+                $('#location').val = "";
+              }
+        }
+
+            function showPosition(position)
+            {
+                $('#location').val = position.coords.latitude + "," + position.coords.longitude;
+            }
+		</script>
+    </body>
+</html>

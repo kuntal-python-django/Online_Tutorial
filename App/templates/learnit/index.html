@@ -1,0 +1,212 @@
+{% extends 'learnit/base.html' %}
+{% load static %}
+
+{% block content %}
+	<!--================Home Banner Area =================-->
+	<section class="home_banner_area">
+		<div class="banner_inner d-flex align-items-center">
+			<div class="overlay bg-parallax" data-stellar-ratio="0.5" data-stellar-vertical-offset="0" data-background=""></div>
+			<div class="container">
+				<div class="banner_content text-center">
+					<h3>{{ index_data.banner_message|safe }}</h3>
+					<a class="main_btn" href="{% url 'courses' %}">Get Started</a>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!--================End Home Banner Area =================-->
+
+	<!--================Finance Area =================-->
+	<section class="finance_area">
+		<div class="container">
+			<div class="finance_inner row">
+				<div class="col-lg-2 col-sm-6">
+					<div class="finance_item">
+						<div class="media">
+							<div class="d-flex">
+								<i class="lnr lnr-rocket"></i>
+							</div>
+							<div class="media-body">
+								<a href="{% url 'courses' %}?title=Python" target="_blank"><h5>Python</h5></a>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-2 col-sm-6">
+					<div class="finance_item">
+						<div class="media">
+							<div class="d-flex">
+								<i class="lnr lnr-earth"></i>
+							</div>
+							<div class="media-body">
+								<a href="{% url 'courses' %}?title=Django" target="_blank"><h5>Django</h5></a>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-2 col-sm-6">
+					<div class="finance_item">
+						<div class="media">
+							<div class="d-flex">
+								<i class="lnr lnr-smile"></i>
+							</div>
+							<div class="media-body">
+								<a href="{% url 'courses' %}?title=Testing" target="_blank"><h5>Testing</h5></a>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-2 col-sm-6">
+					<div class="finance_item">
+						<div class="media">
+							<div class="d-flex">
+								<i class="lnr lnr-tag"></i>
+							</div>
+							<div class="media-body">
+								<a href="{% url 'courses' %}?title=PHP" target="_blank"><h5>PHP</h5></a>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-2 col-sm-6">
+					<div class="finance_item">
+						<div class="media">
+							<div class="d-flex">
+								<i class="lnr lnr-smile"></i>
+							</div>
+							<div class="media-body">
+								<a href="{% url 'courses' %}?title=Java" target="_blank"><h5>Java</h5></a>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-2 col-sm-6">
+					<div class="finance_item">
+						<div class="media">
+							<div class="d-flex">
+								<i class="lnr lnr-earth"></i>
+							</div>
+							<div class="media-body">
+								<a href="{% url 'courses' %}?title=Trending" target="_blank"><h5>Trending</h5></a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!--================End Finance Area =================-->
+
+	<!--================Courses Area =================-->
+	<section class="courses_area p_100">
+		<div class="container">
+			<div class="main_title">
+				<h2>{{ index_data.course_heading_main|safe }}</h2>
+				<p>
+					{{ index_data.course_heading_child|safe }}
+				</p>
+			</div>
+
+			<div class="row courses_inner">
+				<div class="col-lg-12">
+					<div class="grid_inner">
+
+						{% for i in course_list %}
+						<!--  Start Loop Here  -->
+						<div class="grid_item wd44">
+							<div class="courses_item">
+								<img src='{% static "learnit/img/courses/course-1.jpg" %}' alt="">
+								<div class="hover_text">
+									<a class="cat" href="{% url 'course_details' %}?id={{i.id}}">Click</a>
+									<a href="{% url 'course_details' %}?id={{i.id}}"><h4>{{i.title}}</h4></a>
+									<ul class="list">
+										<li><a href="https://kuntal-python-django.github.io" target="_blank"><i class="lnr lnr-user"></i>{{i.author}}</a></li>
+										<li><a href="javascript:"><i class="lnr lnr-tag"></i>{{i.tag}}</a></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						<!--	End Loop	-->
+						{% endfor %}
+
+					</div>
+				</div>
+			</div>
+			<br>
+		</div>
+	</section>
+
+	<br>
+
+	<div class="banner_content text-center">
+		{% if course_list.has_other_pages %}
+		{% if course_list.has_previous %}
+		<a href="?page={{ course_list.previous_page_number }}" class="main_btn" >Previous</a>
+		{% endif %}
+		&nbsp;&nbsp;&nbsp;&nbsp;
+		{% if course_list.has_next %}
+		<a href="?page={{ course_list.next_page_number }}" class="main_btn" >Next</a>
+		{% endif %}
+		{% endif %}
+	</div>
+
+	<!--================End Courses Area =================-->
+
+	<script>
+		function fetch_courses()
+		{
+			let start = parseInt($('#start').val());
+			let end = start + 4;
+		    $.ajax({
+                        type: "GET",
+                        contentType: "application/json; charset=utf-8",
+                        url: '{% url "get_courses_Api" %}',
+                        async: true,
+                        data: {
+                            start: start,
+							end: end,
+                           },
+                        success: function (response)
+                            {
+                              let course_list = response['course_list'];
+							  console.log(course_list);
+                              if(course_list!='')
+							  {
+								for(let i=0; i<course_list.lenght; i++)
+								{
+									console.log(course_list[i]);
+									var new_data = '<div class="grid_item wd44">'+
+									'<div class="courses_item">'+
+									'<img src="" alt="">'
+									'<div class="hover_text">'+
+									'<a class="cat" href="">Click</a>'+
+									'<a href="#"><h4>{{i.title}}</h4></a>'+
+									'<ul class="list">'+
+									'<li><a href="javascript:"><i class="lnr lnr-user"></i>{{i.author}}</a></li>'+
+									'<li><a href="javascript:"><i class="lnr lnr-tag"></i>{{i.tag}}</a></li>'+
+									'</ul>'+
+									'</div>'+
+									'</div>'+
+									'</div>'+
+									'</div>'
+
+									var x = document.getElementsByName('grid_inner');
+
+									$(new_data).insertAfter('.grid_inner');
+
+								}
+							  }
+							  else
+							  {
+
+							  }
+                           },
+                        error: function ()
+                        {
+                        	alert("Internet Not Available !!");
+                        }
+                });
+		}
+	</script>
+
+{% endblock %}
